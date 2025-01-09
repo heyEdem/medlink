@@ -29,6 +29,8 @@ public class Otp {
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
+    private LocalDateTime expiry;
+
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
