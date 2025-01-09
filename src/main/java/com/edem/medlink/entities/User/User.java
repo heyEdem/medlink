@@ -84,15 +84,15 @@ public class User {
     }
 
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof User user)) return false;
-//        return Objects.equals(userId, user.userId) && Objects.equals(email, user.email) && Objects.equals(role, user.role) && Objects.equals(createdAt, user.createdAt) && Objects.equals(deletedAt, user.deletedAt) && Objects.equals(password, user.password) && Objects.equals(contact, user.contact) && Objects.equals(profilePicture, user.profilePicture);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(userId, email, role, createdAt, deletedAt, password, contact, profilePicture);
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(userId, user.userId) && Objects.equals(email, user.email) && Objects.equals(role, user.role) && Objects.equals(createdAt, user.createdAt) && Objects.equals(deletedAt, user.deletedAt) && Objects.equals(password, user.password) && Objects.equals(contact, user.contact) && Objects.equals(profilePicture, user.profilePicture);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, email, role, createdAt, deletedAt, password, contact, profilePicture);
+    }
 }
