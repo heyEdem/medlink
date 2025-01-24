@@ -7,7 +7,6 @@ import com.edem.medlink.exception.VerificationFailedException;
 import com.edem.medlink.repository.OtpRepository;
 import com.edem.medlink.util.OtpMailSender;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -26,7 +25,7 @@ public class OtpServiceImpl implements OtpService {
     private static final int OTP_LENGTH = 6;
 
     @Override
-    public void generateOtp(String email, OtpType type) {
+    public void generateAndSendOtp(String email, OtpType type) {
         String code = generator();
         LocalDateTime expiry = LocalDateTime.now().plusMinutes(5);
 
@@ -50,9 +49,9 @@ public class OtpServiceImpl implements OtpService {
 
     @Override
     public boolean isValidOtp(String code, String email) {
-        Otp otp = otpRepository.findByCode(code).orElseThrow(() -> new VerificationFailedException(VERIFICATION_FAILED_MESSAGE));
+        Otp otp = otpRepository.findByCode(code).orElseThrow(() -> new VerificationFailedException(OTP_VERIFICATION_FAILED_MESSAGE));
 
-        if (!Objects.equals(otp.getEmail(), email)) throw new VerificationFailedException(VERIFICATION_FAILED_MESSAGE);
+        if (!Objects.equals(otp.getEmail(), email)) throw new VerificationFailedException(OTP_VERIFICATION_FAILED_MESSAGE);
 
         boolean isOtpExpired = isOtpExpired(otp);
 
@@ -62,7 +61,7 @@ public class OtpServiceImpl implements OtpService {
 
     @Override
     public void invalidateOtp(String code) {
-        Otp otp = otpRepository.findByCode(code).orElseThrow(()-> new VerificationFailedException(VERIFICATION_FAILED_MESSAGE));
+        Otp otp = otpRepository.findByCode(code).orElseThrow(()-> new VerificationFailedException(OTP_VERIFICATION_FAILED_MESSAGE));
         otp.setExpiry(LocalDateTime.now());
         otpRepository.save(otp);
     }

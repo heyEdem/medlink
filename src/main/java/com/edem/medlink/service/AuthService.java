@@ -1,12 +1,13 @@
 package com.edem.medlink.service;
 
 import com.edem.medlink.dto.*;
+import org.springframework.http.ResponseEntity;
 
 public interface AuthService {
 
-    GenericResponseMessage signUp (SignUpRequest request);
+    ResponseEntity<GenericResponseMessage> signUp (SignUpRequest request);
 
-    SignUpSuccessResponse verifyAndSignUpUser(SignUpSuccessResponse response);
+    SignUpSuccessResponse verifyAndSignUpUser(VerifyOtpDto otpDto);
 
     LoggedInUserResponse login(LoginRequest request);
 
