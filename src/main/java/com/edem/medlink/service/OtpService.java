@@ -4,7 +4,7 @@ import com.edem.medlink.entities.Otp.OtpType;
 
 public interface OtpService {
 
-    void generateOtp (String email, OtpType type);
+    void generateAndSendOtp(String email, OtpType type);
 
     boolean isValidOtp(String code, String email);
 
