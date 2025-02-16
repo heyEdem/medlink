@@ -28,6 +28,7 @@ spring:
 
   flyway:
     baseline-on-migrate: true
+    enabled: true
 
 secret-key: ${JWT_SECRET}
 jwt-token-expiration: ${EXPIRATION}

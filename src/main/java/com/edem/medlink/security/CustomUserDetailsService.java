@@ -2,6 +2,7 @@ package com.edem.medlink.security;
 
 import com.edem.medlink.entities.User.User;
 import com.edem.medlink.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
     @Override
