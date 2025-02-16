@@ -21,8 +21,8 @@ import static com.edem.medlink.util.Validator.VERIFICATION_FAILED;
 @Component
 @RequiredArgsConstructor
 public class OtpMailSender implements EmailService<OtpEmailTemplate> {
-    private JavaMailSender javaMailSender;
-    private ITemplateEngine templateEngine;
+    private final JavaMailSender javaMailSender;
+    private final ITemplateEngine templateEngine;
 
 
     @Override
