@@ -1,7 +1,7 @@
 package com.edem.medlink;
 
 import com.edem.medlink.dto.*;
-import com.edem.medlink.service.AuthService;
+import com.edem.medlink.service.auth.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

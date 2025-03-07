@@ -4,7 +4,8 @@ import lombok.Builder;
 
 @Builder
 public record SignUpSuccessResponse (
-        String name,
+        String firstname,
+        String lastname,
         String email,
         String token
 ){
