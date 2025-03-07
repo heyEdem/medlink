@@ -1,4 +1,4 @@
-package com.edem.medlink.service;
+package com.edem.medlink.service.auth;
 
 import com.edem.medlink.dto.*;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.edem.medlink.service;
+package com.edem.medlink.service.auth;
 
 import com.edem.medlink.dto.*;
 import com.edem.medlink.entities.Otp.OtpType;
@@ -9,6 +9,7 @@ import com.edem.medlink.exception.VerificationFailedException;
 import com.edem.medlink.repository.UserRepository;
 import com.edem.medlink.security.JwtService;
 import com.edem.medlink.security.SecurityUser;
+import com.edem.medlink.service.OtpService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -51,7 +52,8 @@ public class AuthServiceImpl implements AuthService {
 
             User user = User.builder()
                     .email(request.email())
-                    .name(request.firstName() + " " + request.lastName())
+                    .firstname(request.firstName())
+                    .lastname(request.lastName())
                     .password(passwordEncoder.encode(request.password()))
                     .contact(request.contact())
                     .build();
@@ -81,7 +83,8 @@ public class AuthServiceImpl implements AuthService {
 
         return SignUpSuccessResponse.builder()
                 .email(user.getEmail())
-                .name(user.getName())
+                .firstname(user.getFirstname())
+                .lastname(user.getLastname())
                 .token(token)
                 .build();
 
@@ -96,7 +99,8 @@ public class AuthServiceImpl implements AuthService {
 
         return LoggedInUserResponse.builder()
                 .email(user.getEmail())
-                .name(user.getName())
+                .firstname(user.getFirstname())
+                .lastname(user.getLastname())
                 .token(token)
                 .roles(user.getRole())
                 .build();

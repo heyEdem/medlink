@@ -27,7 +27,10 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    private String name;
+    private String firstname;
+
+    @Column(nullable = false)
+    private String lastname;
 
     @Enumerated(EnumType.STRING)
     private Roles role;
