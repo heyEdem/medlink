@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,8 +22,8 @@ public class AuthController {
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<GenericResponseMessage> register(@Valid @RequestBody SignUpRequest request){
-        return authService.signUp(request);
+    public ResponseEntity<GenericResponseMessage> register_patient(@Valid @RequestBody SignUpPatient request){
+        return authService.signUpPatient(request);
     }
 @Operation(
             summary = "Doctor sign up",

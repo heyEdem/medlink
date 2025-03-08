@@ -36,7 +36,7 @@ public class AuthServiceImpl implements AuthService {
     private final JwtService jwtService;
 
     @Override
-    public ResponseEntity<GenericResponseMessage> signUp(SignUpRequest request) {
+    public ResponseEntity<GenericResponseMessage> signUpPatient(SignUpPatient request) {
         Optional<User> byEmail = userRepository.findByEmail(request.email());
 
         if (byEmail.isPresent()) {
@@ -57,6 +57,10 @@ public class AuthServiceImpl implements AuthService {
                     .lastname(request.lastName())
                     .password(passwordEncoder.encode(request.password()))
                     .contact(request.contact())
+                    .emergency_number(request.emergency_number())
+                    .medical_history(request.medical_history())
+                    .dob(request.dob())
+                    .role(Roles.PATIENT)
                     .build();
 
             otpService.generateAndSendOtp(user.getEmail(), OtpType.CREATE);

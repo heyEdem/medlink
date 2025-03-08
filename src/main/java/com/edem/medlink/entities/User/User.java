@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -54,7 +55,7 @@ public class User {
 
 
     //extra patient fields
-    private LocalDateTime dob;
+    private LocalDate dob;
 
     private String emergency_number;
 

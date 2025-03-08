@@ -4,8 +4,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Builder
-public record SignUpRequest (
+public record SignUpPatient(
         @NotBlank
         @NotNull
         String firstName,
@@ -22,6 +25,18 @@ public record SignUpRequest (
         @NotNull
         String password,
 
-        String contact
+        String contact,
+
+
+        @NotNull
+        LocalDate dob,
+
+        @NotBlank
+        @NotNull
+        String emergency_number ,
+
+        @NotBlank
+        @NotNull
+        String medical_history
 ) {
 }
