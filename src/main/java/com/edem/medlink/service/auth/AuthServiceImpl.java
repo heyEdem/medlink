@@ -2,6 +2,7 @@ package com.edem.medlink.service.auth;
 
 import com.edem.medlink.dto.*;
 import com.edem.medlink.entities.Otp.OtpType;
+import com.edem.medlink.entities.User.Roles;
 import com.edem.medlink.entities.User.User;
 import com.edem.medlink.exception.DuplicateEmailException;
 import com.edem.medlink.exception.UserNotFoundException;
@@ -56,6 +57,42 @@ public class AuthServiceImpl implements AuthService {
                     .lastname(request.lastName())
                     .password(passwordEncoder.encode(request.password()))
                     .contact(request.contact())
+                    .build();
+
+            otpService.generateAndSendOtp(user.getEmail(), OtpType.CREATE);
+            userRepository.save(user);
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new GenericResponseMessage(TOKEN_SENT_MSG));
+    }
+    @Override
+    public ResponseEntity<GenericResponseMessage> signUpDoctor(SignUpDoctor request) {
+        Optional<User> byEmail = userRepository.findByEmail(request.email());
+
+        if (byEmail.isPresent()) {
+            User testUser = byEmail.get();
+
+            if (testUser.isVerified()) { //if user exists & is not verified let them request new otp
+                throw new DuplicateEmailException(DUPLICATE_EMAIL);
+            } else {
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body(new GenericResponseMessage(ACCOUNT_EXIST_ALREADY));
+            }
+
+        } else {
+
+            User user = User.builder()
+                    .email(request.email())
+                    .firstname(request.firstName())
+                    .lastname(request.lastName())
+                    .password(passwordEncoder.encode(request.password()))
+                    .contact(request.contact())
+                    .clinic(request.clinic())
+                    .specialty(request.specialty())
+                    .qualification(request.qualification())
+                    .bio(request.bio())
+                    .role(Roles.DOCTOR)
                     .build();
 
             otpService.generateAndSendOtp(user.getEmail(), OtpType.CREATE);
