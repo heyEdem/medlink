@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 public interface AuthService {
 
     ResponseEntity<GenericResponseMessage> signUp (SignUpRequest request);
+    ResponseEntity<GenericResponseMessage> signUpDoctor (SignUpDoctor request);
 
     SignUpSuccessResponse verifyAndSignUpUser(VerifyOtpDto otpDto);
 

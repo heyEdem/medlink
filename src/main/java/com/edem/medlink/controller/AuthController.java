@@ -1,4 +1,4 @@
-package com.edem.medlink;
+package com.edem.medlink.controller;
 
 import com.edem.medlink.dto.*;
 import com.edem.medlink.service.auth.AuthService;
@@ -8,12 +8,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @AllArgsConstructor
 @RequestMapping("api/v1/auth")
 public class AuthController {
@@ -28,6 +25,16 @@ public class AuthController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<GenericResponseMessage> register(@Valid @RequestBody SignUpRequest request){
         return authService.signUp(request);
+    }
+@Operation(
+            summary = "Doctor sign up",
+            method = "POST"
+    )
+
+    @PostMapping("/signup-doc")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<GenericResponseMessage> register_doctor(@Valid @RequestBody SignUpDoctor request){
+        return authService.signUpDoctor(request);
     }
 
     @Operation(
