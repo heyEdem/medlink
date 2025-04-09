@@ -1,3 +1,7 @@
 spring:
   profiles:
     active: dev
+  application:
+    name: medlink
+
+#  export $(grep -v '^#' e.env | xargs)

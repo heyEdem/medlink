@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: backend
   datasource:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}

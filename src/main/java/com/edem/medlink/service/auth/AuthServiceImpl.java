@@ -57,6 +57,7 @@ public class AuthServiceImpl implements AuthService {
                     .lastname(request.lastName())
                     .password(passwordEncoder.encode(request.password()))
                     .contact(request.contact())
+                    .role(Roles.PATIENT)
                     .build();
 
             otpService.generateAndSendOtp(user.getEmail(), OtpType.CREATE);
