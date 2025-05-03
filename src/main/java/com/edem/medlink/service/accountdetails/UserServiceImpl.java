@@ -63,6 +63,9 @@ public class UserServiceImpl implements UserService {
         if (request.medical_history() != null && !request.medical_history().isEmpty())
             user.setMedical_history(request.medical_history());
 
+        if (request.digital_address() != null && !request.digital_address().isEmpty())
+            user.setDigital_address(request.digital_address());
+
         // Save the updated user details
         userRepository.save(user);
 
@@ -83,6 +86,7 @@ public class UserServiceImpl implements UserService {
                 .medical_history(user.getMedical_history())
                 .qualification(user.getQualification())
                 .contact(user.getContact())
+                .digital_address(user.getDigital_address())
                 .emergency_number(user.getEmergency_number())
                 .clinic(user.getClinic())
                 .build();
