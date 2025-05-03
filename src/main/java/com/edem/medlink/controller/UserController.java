@@ -7,10 +7,7 @@ import com.edem.medlink.service.accountdetails.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,7 +29,7 @@ public class UserController {
             method = "PATCH"
     )
     @PatchMapping("/profile-settings")
-    public GenericResponseMessage updateUser(UpdateUserProfileRequest request, Authentication authentication){
+    public GenericResponseMessage updateUser(@RequestBody UpdateUserProfileRequest request, Authentication authentication){
        return userService.updateUserSettings(request, authentication);
     }
 }

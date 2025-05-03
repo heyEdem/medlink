@@ -31,7 +31,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public GenericResponseMessage updateUserSettings(UpdateUserProfileRequest request, Authentication authentication) {
-
         User user = getUser(authentication);
 
         if (request.firstName() != null && !request.firstName().isEmpty())
@@ -40,8 +39,14 @@ public class UserServiceImpl implements UserService {
         if (request.lastName() != null && !request.lastName().isEmpty())
             user.setLastname(request.lastName());
 
+        if (request.contact() != null && !request.contact().isEmpty())
+            user.setContact(request.contact());
+
         if (request.bio() != null && !request.bio().isEmpty())
             user.setBio(request.bio());
+
+        if (request.clinic() != null && !request.clinic().isEmpty())
+            user.setClinic(request.clinic());
 
         if (request.specialty() != null && !request.specialty().isEmpty())
             user.setSpecialty(request.specialty());
@@ -49,11 +54,14 @@ public class UserServiceImpl implements UserService {
         if (request.qualification() != null && !request.qualification().isEmpty())
             user.setQualification(request.qualification());
 
-        if (request.contact() != null && !request.contact().isEmpty())
-            user.setContact(request.contact());
+        if (request.dob() != null)
+            user.setDob(request.dob());
 
         if (request.emergency_number() != null && !request.emergency_number().isEmpty())
             user.setEmergency_number(request.emergency_number());
+
+        if (request.medical_history() != null && !request.medical_history().isEmpty())
+            user.setMedical_history(request.medical_history());
 
         // Save the updated user details
         userRepository.save(user);
