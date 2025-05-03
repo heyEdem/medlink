@@ -10,7 +10,7 @@ import com.edem.medlink.exception.VerificationFailedException;
 import com.edem.medlink.repository.UserRepository;
 import com.edem.medlink.security.JwtService;
 import com.edem.medlink.security.SecurityUser;
-import com.edem.medlink.service.OtpService;
+import com.edem.medlink.service.otp.OtpService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -57,6 +57,7 @@ public class AuthServiceImpl implements AuthService {
                     .lastname(request.lastName())
                     .password(passwordEncoder.encode(request.password()))
                     .contact(request.contact())
+                    .role(Roles.PATIENT)
                     .build();
 
             otpService.generateAndSendOtp(user.getEmail(), OtpType.CREATE);
