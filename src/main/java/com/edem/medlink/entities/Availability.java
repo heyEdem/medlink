@@ -19,12 +19,13 @@ public class Availability {
     private UUID id;
 
     @ManyToOne
+    @JoinColumn(name = "doctor_id", nullable = false)
     private User doctor;
 
-    @Column(nullable = false)
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime start_time;
 
-    @Column(nullable = false)
+    @Column(name = "end_time",nullable = false)
     private LocalDateTime end_time;
 
 }

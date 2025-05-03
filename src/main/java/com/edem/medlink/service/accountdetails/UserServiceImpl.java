@@ -89,6 +89,7 @@ public class UserServiceImpl implements UserService {
                 .digital_address(user.getDigital_address())
                 .emergency_number(user.getEmergency_number())
                 .clinic(user.getClinic())
+                .roles(user.getRole())
                 .build();
     }
 }
