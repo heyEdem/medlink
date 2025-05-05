@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: medlink-backend
   datasource:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
@@ -6,11 +8,13 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         database-platform: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        connection:
+          autocommit: false
     show-sql: true
   mail:
     host: ${MAIL_HOST}
@@ -30,4 +34,8 @@ spring:
 
 secret-key: ${JWT_SECRET}
 jwt-token-expiration: ${EXPIRATION}
-
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

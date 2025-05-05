@@ -33,5 +33,6 @@ public class Validator {
     private static final String JWT_EXC_MSG = "Could not authenticate you, try again";
 
     public static final String TOKEN_SENT_MSG = "Token Sent, check your email";
+    public static final String PROFILE_UPDATE_SUCCESS = "Profile updates successful";
 
 }

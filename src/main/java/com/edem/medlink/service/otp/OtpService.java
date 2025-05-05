@@ -1,4 +1,4 @@
-package com.edem.medlink.service;
+package com.edem.medlink.service.otp;
 
 import com.edem.medlink.entities.Otp.OtpType;
 
