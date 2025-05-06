@@ -165,6 +165,10 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public GenericResponseMessage resetPassword(PasswordReset request) {
+        if (!request.password().equals(request.confirmPassword())) {
+            throw new VerificationFailedException(PASSWORD_MISMATCH);
+        }
+
         boolean otpValid = otpService.isValidOtp(request.code(), request.email());
 
         if (!otpValid) throw new VerificationFailedException(OTP_VERIFICATION_FAILED_MESSAGE);

@@ -36,6 +36,8 @@ secret-key: ${JWT_SECRET}
 jwt-token-expiration: ${EXPIRATION}
 logging:
   level:
-    org.springframework.security: DEBUG
+    org.springframework.security: TRACE
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.edem.medlink: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
