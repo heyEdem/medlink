@@ -7,14 +7,17 @@ import com.edem.medlink.exception.VerificationFailedException;
 import com.edem.medlink.repository.OtpRepository;
 import com.edem.medlink.util.OtpMailSender;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 import static com.edem.medlink.util.Validator.*;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class OtpServiceImpl implements OtpService {
@@ -28,19 +31,34 @@ public class OtpServiceImpl implements OtpService {
     public void generateAndSendOtp(String email, OtpType type) {
         String code = generator();
         LocalDateTime expiry = LocalDateTime.now().plusMinutes(5);
+        LocalDateTime now = LocalDateTime.now();
 
-        Otp otp = Otp.builder()
-                .code(code)
-                .type(OtpType.CREATE)
-                .expiry(expiry)
-                .email(email)
-                .build();
+        Optional<Otp> existingOtp = otpRepository.findByEmail(email);
+        Otp otp;
+
+        if (existingOtp.isPresent()) {
+            log.info("Updating existing OTP for email: {}", email);
+            otp = existingOtp.get();
+            otp.setCode(code);
+            otp.setType(type);
+            otp.setExpiry(expiry);
+            otp.setCreatedAt(now);
+        } else {
+            otp = Otp.builder()
+                    .code(code)
+                    .type(type)
+                    .expiry(expiry)
+                    .email(email)
+                    .createdAt(now)
+                    .build();
+        }
 
         OtpEmailTemplate template = OtpEmailTemplate.builder()
                 .to(email)
                 .otpType(type)
                 .otp(code)
                 .build();
+
 
         sender.send(template);
 

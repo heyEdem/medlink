@@ -86,8 +86,9 @@ public class AuthController {
             summary = "reset password with email code and new password",
             method = "POST"
     )
-    @PostMapping("/reset-password-")
+    @PostMapping("/reset-password")
     public GenericResponseMessage resetPassword(@RequestBody PasswordReset request){
+        System.out.println("request to change password");
         return authService.resetPassword(request);
     }
 
