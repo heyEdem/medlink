@@ -1,6 +1,9 @@
 spring:
+<<<<<<< HEAD
   application:
     name: medlink-backend
+=======
+>>>>>>> work
   datasource:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
