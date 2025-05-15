@@ -34,5 +34,6 @@ public class Validator {
 
     public static final String TOKEN_SENT_MSG = "Token Sent, check your email";
     public static final String PROFILE_UPDATE_SUCCESS = "Profile updates successful";
+    public static final String PASSWORD_MISMATCH = "Passwords do not match";
 
 }

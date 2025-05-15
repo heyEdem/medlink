@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -13,8 +12,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationEntryPointFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -38,12 +35,17 @@ public class SecurityConfig {
         http
                        .authorizeHttpRequests(
                         auth -> auth.requestMatchers("/error").permitAll()
+                                .requestMatchers("/", "/index.html","/index.html/api/v1/auth/**", "/static/**", "/css/**", "/js/**", "/images/**").permitAll()
                                 .requestMatchers("swagger.html", "/swagger-ui/**","/swagger-ui.html", "/docs/**").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/v1/auth/signup", "/api/v1/auth/signup-doc","api/v1/auth/login", "/api/v1/auth/verify-otp").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/api/v1/request-password-reset","/api/v1/reset-password").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/api/v1/auth/login" ,"/api/v1/auth/signup", "/api/v1/auth/signup-doc", "/api/v1/auth/verify-otp").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/resend-otp","/api/v1/request-password-reset","/api/v1/reset-password").permitAll()
-//                                .requestMatchers(HttpMethod.POST,"/api/v1/auth/**").permitAll()
+                                .requestMatchers(HttpMethod.POST,
+                                        "/api/v1/auth/signup",
+                                        "/api/v1/auth/signup-doc",
+                                        "/api/v1/auth/login",
+                                        "/api/v1/auth/verify-otp",
+                                        "/api/v1/auth/resend-otp",
+                                        "/api/v1/auth/request-password-reset",
+                                        "/api/v1/auth/reset-password"
+                                ).permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/v1/doctor/availability").hasRole("DOCTOR")
                                 .anyRequest().authenticated()
