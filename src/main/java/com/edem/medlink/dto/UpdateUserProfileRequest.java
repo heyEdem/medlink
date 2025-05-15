@@ -15,6 +15,8 @@ public record UpdateUserProfileRequest(
         String qualification,
         LocalDateTime dob,
         String emergency_number,
-        String medical_history
+        String medical_history,
+        String digital_address
 ) {
 }
+// TODO: 5/3/25 add digital address

@@ -39,5 +39,6 @@ logging:
     org.springframework.security: TRACE
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.edem.medlink.service: DEBUG
     com.edem.medlink: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE

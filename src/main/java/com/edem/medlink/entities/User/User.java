@@ -60,6 +60,8 @@ public class User {
 
     private String medical_history;
 
+    private String digital_address;
+
 
     @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean isVerified;

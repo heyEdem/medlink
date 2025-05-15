@@ -1,5 +1,6 @@
 package com.edem.medlink.dto;
 
+import com.edem.medlink.entities.User.Roles;
 import lombok.Builder;
 
 @Builder
@@ -13,7 +14,8 @@ public record AboutUserResponse(
         String bio,
         String digital_address,
         String medical_history,
-        String emergency_number
+        String emergency_number,
+        Roles roles
 
 ) {
 }
