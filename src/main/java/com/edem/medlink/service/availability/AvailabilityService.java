@@ -3,6 +3,7 @@ package com.edem.medlink.service.availability;
 import com.edem.medlink.dto.AvailabilityResponse;
 import com.edem.medlink.dto.CreateAvailabilityRequest;
 import com.edem.medlink.dto.GenericResponseMessage;
+import com.edem.medlink.entities.Availability;
 import org.springframework.security.core.Authentication;
 
 import java.util.List;

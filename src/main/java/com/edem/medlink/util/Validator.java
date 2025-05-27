@@ -19,6 +19,7 @@ public class Validator {
 
     public static final String VERIFICATION_FAILED = "Something went wrong, could not send email";
     public static final String NOT_FOUND_MSG = "email is not valid";
+    public static final String DOCTOR_NOT_FOUND_MSG = "Doctor id not valid";
     public static final String DUPLICATE_EMAIL = "This email is already registered";
     public static final String USER_NOT_FOUND = "Could not find user";
     public static final String ACCOUNT_EXIST_ALREADY = "Account already exists, please request for OTP.";
@@ -35,5 +36,9 @@ public class Validator {
     public static final String TOKEN_SENT_MSG = "Token Sent, check your email";
     public static final String PROFILE_UPDATE_SUCCESS = "Profile updates successful";
     public static final String PASSWORD_MISMATCH = "Passwords do not match";
+
+
+    public static final String APPOINTMENT_CONFIRMED = "Successfully confirmed appointment";
+    public static final String UNAUTHORIZED_MSG = "You are not authorized to confirm this appointment";
 
 }

@@ -1,6 +1,7 @@
 package com.edem.medlink.repository;
 
 
+import com.edem.medlink.dto.AvailabilityResponse;
 import com.edem.medlink.entities.Availability;
 import com.edem.medlink.entities.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,6 @@ public interface AvailabilityRepository extends JpaRepository<Availability, UUID
 
     @Query("SELECT a FROM Availability a WHERE a.doctor = :doctor AND a.start_time > :now")
     List<Availability> findFutureAvailabilitiesByDoctor(User doctor, LocalDateTime now);
+
+    Availability getAvailabilityById (UUID availabilityId);
 }

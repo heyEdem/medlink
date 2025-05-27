@@ -89,6 +89,7 @@ public class AvailabilityServiceImpl implements AvailabilityService {
                 .collect(Collectors.toList());
     }
 
+
     private User getDoctor(Authentication authentication) {
         User user = userRepository.findUserByEmailAndVerified(authentication.getName())
                 .orElseThrow(() -> new UserNotFoundException(USER_NOT_FOUND));

@@ -8,11 +8,11 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         database-platform: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
+#        format_sql: true
         connection:
           autocommit: false
     show-sql: true
@@ -34,11 +34,11 @@ spring:
 
 secret-key: ${JWT_SECRET}
 jwt-token-expiration: ${EXPIRATION}
-logging:
-  level:
-    org.springframework.security: TRACE
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-    com.edem.medlink.service: DEBUG
-    com.edem.medlink: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE
+#logging:
+#  level:
+#    org.springframework.security: TRACE
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+#    com.edem.medlink.service: DEBUG
+#    com.edem.medlink: DEBUG
+#    org.hibernate.orm.jdbc.bind: TRACE
