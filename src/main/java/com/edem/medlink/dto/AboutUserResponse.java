@@ -12,7 +12,7 @@ public record AboutUserResponse(
         String clinic,
         String qualification,
         String bio,
-        String digital_address,
+        String location,
         String medical_history,
         String emergency_number,
         Roles roles

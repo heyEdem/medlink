@@ -1,0 +1,24 @@
+-- ALTER TABLE availability
+-- DROP
+-- CONSTRAINT fk71aop1mtlk9qgmv4icytr4kce;
+--
+-- ALTER TABLE availability
+--     ALTER COLUMN doctor_id SET NOT NULL;
+--
+-- ALTER TABLE users
+--     ADD location VARCHAR(255);
+--
+-- ALTER TABLE availability
+--     ADD doctor_id UUID;
+--
+-- ALTER TABLE availability
+--     ADD is_booked BOOLEAN DEFAULT FALSE;
+--
+-- ALTER TABLE availability
+--     ADD CONSTRAINT FK_AVAILABILITY_ON_DOCTOR FOREIGN KEY (doctor_id) REFERENCES users (user_id);
+--
+-- DROP TABLE user_appointments CASCADE;
+--
+-- ALTER TABLE availability
+-- DROP
+-- COLUMN doctor_user_id;

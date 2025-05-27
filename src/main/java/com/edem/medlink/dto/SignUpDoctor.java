@@ -39,6 +39,8 @@ public record SignUpDoctor(
 
         @NotBlank
         @NotNull
+        String location,
+
         String bio
 
 ) {

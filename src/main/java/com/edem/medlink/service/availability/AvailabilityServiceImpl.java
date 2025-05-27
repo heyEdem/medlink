@@ -81,8 +81,10 @@ public class AvailabilityServiceImpl implements AvailabilityService {
         return availabilities.stream()
                 .map(a -> new AvailabilityResponse(
                         a.getId().toString(),
+                        a.getDoctor().getUserId(),
                         a.getStart_time(),
-                        a.getEnd_time()
+                        a.getEnd_time(),
+                        a.isBooked()
                 ))
                 .collect(Collectors.toList());
     }

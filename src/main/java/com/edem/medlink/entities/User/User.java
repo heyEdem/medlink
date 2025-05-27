@@ -60,7 +60,8 @@ public class User {
 
     private String medical_history;
 
-    private String digital_address;
+    @Column(name = "location", nullable = false)
+    private String location;
 
 
     @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
