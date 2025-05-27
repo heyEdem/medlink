@@ -28,4 +28,6 @@ public class Availability {
     @Column(name = "end_time",nullable = false)
     private LocalDateTime end_time;
 
+    @Column(name = "isBooked", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private boolean isBooked = true;
 }
